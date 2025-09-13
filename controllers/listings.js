@@ -1,15 +1,7 @@
 const Listing = require("../models/listing.js");
 const mongoose = require("mongoose");
 const customError = require("../utils/customError.js");
-const NodeGeocoder = require("node-geocoder");
 
-const options = {
-  provider: 'openstreetmap',
-   httpAdapter: 'https', // Default
-  formatter: null,      // Default
-  userAgent: "StayIn/1.0 (samantagour918@gmail.com)"
-};
-const geocoder = NodeGeocoder(options);
 
 module.exports.index =  async(req,res)=>{
     let List_data = await Listing.find({});
@@ -41,16 +33,7 @@ module.exports.showListing = async(req,res)=>{
     if(!item){
         throw new customError(404 , "Page Not Found!");
     }
-    const locationName = item.location.split(",")[0]; //to extract the first location only
-    const geoData = await geocoder.geocode(locationName);
-    
-    if (geoData.length > 0) {
-      const lat = geoData[0].latitude;
-      const lon = geoData[0].longitude;
-     res.render("listings/show.ejs" , {item ,locationName , lat , lon });
-    } else {
-        res.render("listings/show.ejs" , {item , locationName ,lat: 22.5726, lon: 88.3639 });
-    }
+    res.render("listings/show.ejs" , {item});
     
 }
 

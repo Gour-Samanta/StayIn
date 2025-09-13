@@ -10,6 +10,6 @@ function initMap(lat, lon, locationName) {
 
     // Add marker
     L.marker([lat, lon]).addTo(map)
-      .bindPopup(`<b>${locationName}</b><br> exact location show after booking <br>`)
+      .bindPopup(`<b>${locationName}</b><br>This is the exact location<br>`)
       .openPopup();
 }

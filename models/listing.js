@@ -38,6 +38,14 @@ const listingSchema = new mongoose.Schema({
         required:true
         
     },
+    lat : {
+        type:Number, 
+        required:true
+    },
+    lon : {
+        type:Number, 
+        required:true
+    },
     reviews :[
         {
             type : mongoose.Schema.Types.ObjectId,

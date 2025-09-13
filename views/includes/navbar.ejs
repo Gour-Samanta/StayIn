@@ -1,0 +1,50 @@
+ <nav class="navbar navbar-expand-md bg-body-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-bed"></i> StayIn</a>
+
+
+    <!-- Toggler button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapse Menu -->
+    <div class="collapse navbar-collapse collapse-nav-bg" id="navbarNavAltMarkup">
+      <div class="navbar-nav navbar-nav-style">
+        <a class="nav-link" href="/listings">Explore</a>
+      </div>
+
+      <!-- 🔍 Search for desktop view -->
+      <form class="d-none d-md-flex ms-3 me-auto search-nav-desk" role="search" action="/search" method="GET">
+  
+        <input class="form-control me-2 search-nav-desk-f" type="search" name="query" placeholder="Search destination..." aria-label="Search">
+        <button class="btn search-btn search-nav-desk-s" type="submit">Search</button>
+      </form>
+
+      <!-- Right side (auth links) -->
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link nav-host" href="/listings/new">Become a Host</a>
+        <% if (!currUser) { %>
+          <button type="button" class="btn btn-sm login-btn">
+            <a class="nav-link login" href="/login"><i class="fa-regular fa-circle-user"></i> Login</a>
+          </button>
+        <% } %>
+        <% if (currUser) { %>
+          <a href="/myprofile" class="nav-link user-profile"><i class="fa-solid fa-circle-user"></i></a>
+          <button type="button" class="btn btn-sm logout-btn">
+            <a class="nav-link logout" href="/logout">Logout</a>
+          </button>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="search-nav-mobile">
+      <!-- 🔍 Search for mobile view -->
+    <form class="d-flex d-md-none ms-2 me-auto" role="search" action="/search" method="GET">
+      <input class="form-control me-2" type="search" name="query" placeholder="Search destination.." aria-label="Search">
+      
+    </form>
+    </div>
+  </div>
+</nav> 

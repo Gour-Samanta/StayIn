@@ -1,0 +1,324 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+}
+.container{
+  flex: 1;
+}
+/* NavBar */
+.navbar-brand {
+  color: #ff3856;
+}
+.nav-link {
+  color: #222222;
+  font-weight:550 ;
+}
+
+.navbar {
+  height: 5rem;
+  border-bottom: 1px solid #a9a9a9;
+  background-color: rgb(249, 241, 241);
+  
+}
+.nav-host{
+  margin-right: 0.5rem;
+}
+.nav-host:hover{
+  background-color: rgb(237, 223, 223);
+  border-radius: 1.8rem;
+  margin-right: 0.5rem;
+}
+.navbar-nav{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.collapse-nav-bg{
+  background-color: rgba(249, 241, 241, 0.971);
+  border-radius: 0.4rem;
+  margin: 2rem;
+}
+
+/* nav signup login */
+.logout{
+  color: rgb(243, 37, 37);
+}
+.user-profile i{
+  color: #ababab;
+  font-size: 1.8rem;
+}
+.login {
+  color: #202020;
+  font-size: 1.2rem;
+}
+.user p{
+  font-size: 0.7rem;
+}
+.logout-btn{
+  background: linear-gradient(to right, #ff4e51f3, #c31431ed);
+   border-radius: 5rem;
+  padding: 0rem 0.2rem;
+}
+.logout-btn a{
+  color: white;
+
+}
+.logout-btn:hover{
+  color: white;
+  box-shadow: 0.2rem 0.2rem 0.8rem rgba(0, 0, 0, 0.864);
+}
+.login-btn{
+  background: linear-gradient(to right, #46a9ff, #00f2fe);
+  border-radius: 5rem;
+  padding: 0rem 0.3rem;
+  }
+  .login-btn:hover{
+    box-shadow: 0.2rem 0.2rem 1rem rgb(23, 23, 23);
+  }
+@media(max-width:767px){
+  .user-profile{
+    display: none;
+  }
+  .login-btn{
+    padding: 0rem 3rem;
+    margin: 1rem 0rem;
+  }
+  body{
+    padding-top: 7rem;
+  }
+  .navbar{
+      height: 7rem;
+  }
+}
+
+/* nav btn on mobile */
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+.navbar-toggler{
+  border: none;
+}
+.search-nav-mobile{
+  
+  margin: auto;
+  
+}
+.search-nav-mobile input{
+  border-radius: 2rem;
+}
+
+.search-btn{
+  background-color: #ff3856;
+  color: white;
+}
+.search-btn:hover{
+  background-color: #ff3856;
+  color: white;
+}
+.search-nav-desk{
+  width: 35rem;
+ background-color: white;
+ padding: 0.3rem 0.4rem;
+  border-radius: 2rem;
+}
+.search-nav-desk-f{
+  border: none;
+  border-radius: 2rem;
+}
+.search-nav-desk-s{
+  border: none;
+  border-radius: 2rem;
+}
+.search-nav-desk-f:focus,
+.search-nav-desk-f:active,
+.search-nav-desk-f-icon:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+
+
+
+
+/* Footer */
+.f-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  background-color: #eeeded;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.f-info-abouts ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.f-info-abouts li {
+  margin: 0.8rem;
+}
+.f-info-abouts a {
+  text-decoration: none;
+  color: #383838;
+}
+.f-info-abouts a:hover {
+  text-decoration: underline;
+  color: #151414;
+}
+.f-logo {
+  font-weight: 600;
+}
+.f-logo .fa-copyright {
+  font-size: 0.7rem;
+  margin-right: 0.2rem;
+}
+
+.f-info-socials a {
+  color: #353434;
+  margin-right: 0.7rem;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  padding: 0.4rem;
+  transition: 0.5s ease;
+}
+.f-info-socials a:hover {
+  background-color: #c8c8c8;
+}
+
+@media(max-width :767px){
+  .f-info-sm{
+    height: 12rem;
+  }
+  .f-info-socials-sm{
+    margin: auto;
+  }
+  .card-body-review{
+    width: 92%;
+    margin: auto;
+  }
+}
+
+/* cards */
+.list-card {
+  border: none;
+  margin: 1rem 0rem;
+}
+.card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+  height: 10rem;
+  transition: transform 0.4s ease;
+}
+.card-body {
+  padding: 0rem;
+}
+.c-details {
+  text-decoration: none;
+}
+
+/* card effect */
+.card-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0.1rem 0.1rem 1rem;
+}
+
+/* edit page */
+.edit-btn{
+  background-color: #ff3856;
+  border: none;
+  
+}
+.edit-btn:hover{
+  background-color: #ff3856;
+  border: none;
+  box-shadow: 0 0 1rem #ff3856;
+}
+
+
+/* add page
+.add-btn{
+  background-color: #ff3856;
+  border: none;
+}
+.add-btn:hover{
+  background-color: #ff3856;
+  border: none;
+} */
+
+
+/* show card  */
+.show-img{
+  height: 20rem;
+}
+.show-btn{
+  display: flex;
+  justify-content: space-between;
+}
+.show-price{
+  text-decoration: underline;
+  font-size: 1.5rem;
+}
+.fa-asterisk{
+  color: rgb(224, 0, 0);
+  font-size: 0.3rem;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+
+
+/* review card */
+
+.card-text-review{
+  overflow: hidden;
+  height: 10rem;
+}
+.comment-title{
+  display: flex;
+  height: 1.8rem;
+  
+}
+.card-title{
+  height: 100%;
+ margin-top: 0.2rem;
+ margin-right:0.4rem ;
+}
+
+
+/* signup */
+
+.signUp-box{
+  background-color: rgb(224, 224, 224);
+  border-radius: 1rem;
+}
+@media(max-width : 576px){
+  .signUp-box{
+    width: 80%;
+  }
+}
+.cross-signUp i{
+  color: rgb(119, 119, 119);
+}
+.signUp-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signup-link {
+  color: #464646;
+  font-size: 0.8rem;
+  
+  
+}

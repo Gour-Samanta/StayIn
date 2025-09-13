@@ -1,0 +1,124 @@
+<% layout("layouts/boilarplate.ejs") -%>
+<body>
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-sm-8">
+      <br />
+      <h2>Create a New Listing</h2>
+      <form
+        action="/listings"3
+        method="post"
+        class="needs-validation after-submit"
+        novalidate
+        enctype="multipart/form-data"
+
+      >
+        <div class="my-2 mt-3">
+          <label for="title" class="form-label"
+            >Title<i class="fa-solid fa-asterisk"></i
+          ></label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="type title "
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">
+      Looks good!
+    </div>
+   
+        </div>
+
+        <div class="my-2">
+          <label for="description" class="form-label"
+            >Description<i class="fa-solid fa-asterisk"></i
+          ></label>
+          <textarea
+            name="description"
+            id=""
+            placeholder="Write about your hotel.."
+            class="form-control"
+            required
+          ></textarea>
+           <div class="invalid-feedback">
+      Description is required.
+    </div>
+        </div>
+
+        <div class="my-2">
+          <label for="image[url]" class="form-label">Image<i class="fa-solid fa-asterisk"></i> </label>
+          <input
+            type="file"
+            name="image[url]"
+            id=""
+            class="form-control"
+            required
+          />
+           <div class="invalid-feedback">
+      Image is required.
+    </div>
+        </div>
+        
+
+        <div class="row">
+          <div class="col-md-5 my-2">
+            <label for="price" class="form-label"
+              >Price<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              id=""
+              min="0"
+              placeholder="ex:2000"
+              required
+            />
+            <div class="invalid-feedback">
+      please enter valid price.
+    </div>
+          </div>
+
+          <div class="col-md-7 my-2">
+            <label for="country" class="form-label"
+              >Country<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input
+              type="text"
+              class="form-control"
+              name="country"
+              id=""
+              placeholder="ex:India"
+              required
+            />
+            <div class="invalid-feedback">
+      please enter a valid country.
+    </div>
+          </div>
+        </div>
+
+        <div class="col my-2">
+          <label for="location" class="form-label"
+            >location<i class="fa-solid fa-asterisk"></i
+          ></label>
+          <input
+            type="text"
+            class="form-control"
+            name="location"
+            id=""
+            placeholder="location"
+            required
+          />
+          <div class="invalid-feedback">
+            please enter a valid location.
+    </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn my-4 edit-btn">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,31 @@
+<!-- 
+
+<%if(success && success.length){%>  //also use sweetalert format
+  <script>Swal.fire({
+    icon: 'success',
+    title: '<%= success[0] %>',
+    showConfirmButton: false,
+    timer: 2000
+  });</script> 
+  <%}%> -->
+
+  
+  <div class=" row justify-content-center">
+<%if(success && success.length){%>
+    <div class="alert alert-success alert-dismissible fade show col-8" role="alert">
+      <%=success%>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <%}%>
+  </div>
+
+  
+  <div class=" row justify-content-center">
+<%if(error && error.length){%>
+    <div class="alert alert-danger alert-dismissible fade show col-8" role="alert">
+      <%=error%>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <%}%>
+  </div>
+

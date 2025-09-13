@@ -1,0 +1,22 @@
+<% layout("layouts/boilarplate.ejs") -%>
+<body>
+
+
+  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+
+    <%for(let data of List_data){%>
+    <a href="/listings/<%=data._id%>" class="c-details">
+      <div class="card col list-card" style="height: 15rem">
+        <img src="<%=data.image.url%>" class="card-img-top card-img" alt="img" />
+        <div class="card-body">
+          <p class="card-text">
+            <b><%=data.title%></b>
+            <br />
+            &#8377;<%=data.price.toLocaleString('en-IN')%> per night
+          </p>
+        </div>
+      </div>
+    </a>
+    <%}%>
+  </div>
+</body>

@@ -1,0 +1,75 @@
+<% layout("layouts/boilarplate.ejs") -%>
+<body>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8">
+            <br>
+            <h2 >edit Your Listing</h2>
+    <form action="/listings/<%=data._id%>?_method=put" method="post" class="needs-validation after-submit" novalidate enctype="multipart/form-data">
+        <div class="my-3">
+            <label for="title" class="form-label">Title<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input type="text" class="form-control" name="title" id="" value="<%=data.title%> " required>
+            <div class="invalid-feedback">
+      Title is required.
+    </div>
+        </div>
+        <div class="my-3">
+            <label for="description" class="form-label">Description<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <textarea name="description" class="form-control" id="" ><%=data.description%></textarea required>
+        </div>
+        
+        <div class="my-3">
+            <label for="image[url]" class="form-label">Image<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input type="file" name="image[url]" class="form-control" id="">
+              <% if (data.image) { %>
+    <small class="text-muted">
+      Current file: <%= data.image.filename || data.image.url %>
+    </small>
+  <% } %>
+            <div class="invalid-feedback">
+      image is required.
+    </div>
+        </div>
+        <div class="row">
+            <div class="my-3 col-md-5">
+            <label for="price" class="form-label">Price<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input type="number" name="price" class="form-control" id="" value="<%=data.price%>" min="0" required>
+            <div class="invalid-feedback">
+      Enter a valid price.
+    </div>
+        </div>
+
+          <div class="my-3 col-md-7">
+            <label for="country" class="form-label">Country<i class="fa-solid fa-asterisk"></i
+            ></label>
+            <input type="text" name="country" class="form-control" id="" value="<%=data.country%> "  required>
+            <div class="invalid-feedback">
+        Enter the correct country name.
+        </div>
+        </div>
+        </div>
+        
+                
+       <div class="my-3">
+        <label for="location" class="form-label">location<i class="fa-solid fa-asterisk"></i
+            ></label>
+        <input type="text" name="location" class="form-control" id="" value="<%=data.location%>" required>
+        <div class="invalid-feedback">
+      Enter a valid location.
+    </div>
+       </div>
+        
+        
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn my-4 edit-btn">Add</button>
+        </div>
+
+    </form>
+
+        </div>
+    </div>
+</body>

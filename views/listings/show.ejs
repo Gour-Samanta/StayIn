@@ -1,0 +1,158 @@
+<% layout("layouts/boilarplate.ejs") -%>
+<body>
+    <div class="row justify-content-center">
+    <div class="col-md-10 col-sm-11 ">
+        <h2 class="my-4">"<%=item.title%>"-</h2>
+            <div class="card list-card" >
+                <div class="row">
+                    <div class="col-md-7">
+                        <img src="<%=item.image.url%>" class="card-img-top show-img " alt="image">
+                    </div>
+                    
+            
+                </div>
+            
+            <div class="card-body">
+            <p class="card-text my-4">
+                <p><i>posted by <%=item.owner.username %></i></p>
+            <b class="my-3"><%=item.title%></b><br><br>
+            <%=item.description%> <br><br>
+            <b>&#8377;</b><b class="show-price"><%=item.price.toLocaleString('en-IN')%></b> per night <br><br>
+            <%=item.location%> <br><br>
+            <b><%=item.country%></b> <br>
+            </p>
+    </div>
+    </div>
+
+    <%if(currUser && currUser._id.equals(item.owner._id) ){ %>
+       
+        <div class="row my-4">
+        <div class="col-3">
+         <a href="/listings/<%=item._id%>/edit" class="btn btn-danger col-12">Edit</a>
+    </div>
+    <div class="col-2">
+        <form action="/listings/<%=item._id%>?_method=delete" method="post"  class="del-btn" data-id="<%= item._id %>">
+         <button class="btn btn-dark btn-md" >Delete</button>
+    </form>
+    </div>
+    </div>
+    <hr>
+     <%}%>
+    
+    
+    
+
+
+
+        <% if(currUser){ %>
+           
+            <form action="/listings/<%=item._id%>/review" method="post" class="needs-validation" novalidate>
+                 <h3 class="my-3">Leave a Review -</h3>
+                
+                     <label for="rating" class="form-label">rating this place</label>
+                    <fieldset class="starability-coinFlip">
+                   <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked aria-label="No rating." />
+                   <input type="radio" id="first-rate1" name="rating" value="1" />
+                   <label for="first-rate1" title="Terrible">1 star</label>
+                   <input type="radio" id="first-rate2" name="rating" value="2" />
+                   <label for="first-rate2" title="Not good">2 stars</label>
+                   <input type="radio" id="first-rate3" name="rating" value="3" />
+                   <label for="first-rate3" title="Average">3 stars</label>
+                   <input type="radio" id="first-rate4" name="rating" value="4" />
+                   <label for="first-rate4" title="Very good">4 stars</label>
+                   <input type="radio" id="first-rate5" name="rating" value="5" />
+                   <label for="first-rate5" title="Amazing">5 stars</label>
+                 </fieldset>
+
+               <div>
+                <label for="comment" class="form-label">Comments here.</label>
+                <textarea type="text" name="comment" class="form-control" rows="4" id="comment" required></textarea>
+                <div class="invalid-feedback">
+      Comments is required!
+    </div>
+               </div>
+                <div >
+                    <button class="my-4 btn btn-outline-success">submit</button>
+                </div>
+            </form>
+            <%}%>
+            <hr>
+            <br>
+
+            <% if(item.reviews.length >0 ){%>
+            <h4>All Reviews - (<%=item.reviews.length %>)</h4>
+            <%}%>
+            <div class="row">
+             <%for(let ele of item.reviews){%>
+
+                
+                    <div class="col-md-5 card my-3 col-sm-11 card-body-review">
+                        <div class="card-body card-text-review">
+                            <div class="comment-title">
+                                <h5 class="card-title">@<%=ele.createdBy.username%></h5>
+                               <p class="starability-result" data-rating=<%=ele.rating%>>
+                            </p> 
+                            </div>
+                            
+                            <hr>
+    
+                            <br>
+                            <p ><%=ele.comment%></p>
+                            
+                        </div>
+                       <% if(ele.comment.length > 100) { %>
+                        <a href="" data-bs-toggle="modal" data-bs-target="#reviewModal<%=ele._id%>">read more>></a>
+        <% } %>
+
+
+
+
+                        <% if(currUser && currUser._id.equals(ele.createdBy._id)) { %>
+                        <form action="/listings/<%=item._id%>/review/<%=ele._id%>?_method=DELETE" method="post" class="my-3">
+                            <button class="btn btn-outline-danger">Delete</button>
+                        </form>
+                        <%}%>
+                    </div>
+                
+    <!-- Modal -->
+<div class="modal fade mx-1 " id="reviewModal<%=ele._id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">@<%=ele.createdBy.username%></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-break">
+        <%=ele.comment%>
+      </div>
+    </div>
+  </div>
+</div>
+
+             <%}%>  
+            </div>
+            <div >
+                <h3>Where you'll be :</h3>
+            <div id="map" style="height:23rem; width:100% ; border-radius:1rem;"></div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+<script src="/js/map.js"></script>
+
+<script>
+  // Pass EJS variables to your external JS
+  const lat = <%- lat %>;
+  const lon = <%- lon %>;
+  const locationName = "<%- locationName %>";
+
+  // Initialize map
+  initMap(lat, lon, locationName);
+</script>
+
+   
+    
+</body>

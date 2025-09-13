@@ -4,7 +4,10 @@ const customError = require("../utils/customError.js");
 const NodeGeocoder = require("node-geocoder");
 
 const options = {
-  provider: 'openstreetmap'
+  provider: 'openstreetmap',
+   httpAdapter: 'https', // Default
+  formatter: null,      // Default
+  userAgent: "StayIn/1.0 (samantagour918@gmail.com)"
 };
 const geocoder = NodeGeocoder(options);
 

@@ -17,7 +17,11 @@
                 <p><i>posted by <%=item.owner.username %></i></p>
             <b class="my-3"><%=item.title%></b><br><br>
             <%=item.description%> <br><br>
-            <b>&#8377;</b><b class="show-price"><%=item.price.toLocaleString('en-IN')%></b> per night <br><br>
+            <div class="booking-section my-4">
+                <div>
+                <b>&#8377;</b><b class="show-price"><%=item.price.toLocaleString('en-IN')%></b> per night </div>
+                <a href="/bookings/<%=item._id%>"><button class="btn booking-btn">Book now</button></a>
+            </div>
             <%=item.location%> <br><br>
             <b><%=item.country%></b> <br>
             </p>

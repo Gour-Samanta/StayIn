@@ -1,0 +1,120 @@
+<% layout("layouts/boilarplate.ejs") -%>
+
+<body>
+    <div class="booking-header">
+        <h4>Review Your Booking</h4>
+    </div>
+   <form action="/bookings/<%=item._id%>" method="post" class="booking-form needs-validation" novalidate>
+    <div class="split-screen">
+   
+   <div class="check-in-out-div">
+    
+    <input type="date" id="checkIn" placeholder="check-in" name="checkIn" class="form-control my-4" required>
+    
+    <input type="date" id="checkOut" placeholder="check-out" name="checkOut" class="form-control my-4" required>
+  
+    
+   </div>
+   
+   <div class="card price-list" >
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item "><h4>Price Breakup</h4></li>
+    <li class="list-group-item">1 Room x <span id="nightsDisplay">1</span> Nights : &#8377;<span id="roomPrice"><%= item.price %></span></li>
+    <li class="list-group-item">Taxes : &#8377;<span id="taxes"><%= Math.floor(item.price * 0.18) %></span></li>
+    <li class="list-group-item">Total Amounts : &#8377;<span id="totalAmount"><b><%= item.price + Math.floor(item.price * 0.18) %></b></span></li>
+  </ul>
+</div>
+</div>
+
+
+
+ <div class="guest-form">
+    <label for="validationCustom01" class="form-label">Full name</label>
+    <input type="text" class="form-control" name="guestName" id="validationCustom01"  required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+
+   <label for="validationTooltipUsername" class="form-label">Mobile no</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="validationTooltipUsernamePrepend">+91</span>
+      <input type="number" class="form-control" min="10" name="phone" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+      <div class="invalid-tooltip">
+        Please choose a valid phone no.
+      </div>
+    </div>
+
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" name="email" id="email" class="form-control" placeholder="xyz@gmail.com" required>
+    
+</div>
+
+   <button class="btn booking-btn" type="submit">Book</button>
+<br><br>
+   </form>
+
+
+    
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    const nightsDisplay = document.getElementById("nightsDisplay");
+
+    // Initialize check-in date
+    const checkInCalendar = flatpickr("#checkIn", {
+        dateFormat: "d M Y",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr) {
+            // Set minimum date of check-out to the selected check-in
+            checkOutCalendar.set('minDate', dateStr);
+
+            // Calculate nights
+            calculateNights();
+        }
+    });
+
+    // Initialize check-out date
+    const checkOutCalendar = flatpickr("#checkOut", {
+        dateFormat: "d M Y",
+        minDate: "today",
+        onChange: function(selectedDates, dateStr) {
+            // Calculate nights whenever check-out changes
+            calculateNights();
+        }
+    });
+
+    // Function to calculate nights
+   function calculateNights() {
+    const checkInDate = checkInCalendar.selectedDates[0];
+    const checkOutDate = checkOutCalendar.selectedDates[0];
+
+    const nightsDisplayEl = document.getElementById("nightsDisplay");
+    const roomPriceEl = document.getElementById("roomPrice");
+    const taxesEl = document.getElementById("taxes");
+    const totalEl = document.getElementById("totalAmount");
+
+    const basePrice = <%= item.price %>; // Price for 1 night
+
+    if (checkInDate && checkOutDate && checkOutDate > checkInDate) {
+        const diffTime = checkOutDate - checkInDate;
+        const nights = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        nightsDisplayEl.innerText = nights;
+
+        const totalRoomPrice = basePrice * nights;
+        const taxAmount = Math.floor(totalRoomPrice * 0.18);
+        const totalAmount = totalRoomPrice + taxAmount;
+
+        roomPriceEl.innerText = totalRoomPrice;
+        taxesEl.innerText = taxAmount;
+        totalEl.innerText = totalAmount;
+    } else {
+        nightsDisplayEl.innerText = 0;
+        roomPriceEl.innerText = basePrice;
+        taxesEl.innerText = Math.floor(basePrice * 0.18);
+        totalEl.innerText = basePrice + Math.floor(basePrice * 0.18);
+    }
+}
+
+</script>
+</body>

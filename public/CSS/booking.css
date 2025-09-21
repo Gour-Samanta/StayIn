@@ -1,0 +1,75 @@
+
+/* booking-heading */
+.booking-header h4{
+    font-weight: 600;
+    padding: 1rem;
+   
+}
+.booking-header{
+    box-shadow: 0rem 0.2rem 2rem rgba(36, 36, 36, 0.206);
+    
+}
+/* booking btn */
+.booking-btn{
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    margin: 0rem 1rem;
+    
+    color: white;
+
+}
+.booking-btn:hover{
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    color: white;
+}
+.booking-section{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+/* booking form */
+.check-in-out-div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0rem;
+    padding: 0rem 1rem;
+   box-shadow: 0rem 0.2rem 2rem rgba(36, 36, 36, 0.206)    ;
+   flex-wrap: wrap;
+    
+}
+.list-group-item{
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+}
+
+.split-screen{
+   margin-top: 1rem;
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0rem;
+    flex-wrap: wrap;
+  
+}
+.price-list{
+    border: 1px solid lightgrey;
+    border-radius: 0.5rem;
+    padding: 1rem;
+   box-shadow: 0rem 0rem 2rem rgba(36, 36, 36, 0.206);
+   width: 18rem;
+}
+@media (max-width: 768px) {
+    .price-list{
+        width: 100%;
+    }
+}
+.guest-form{
+    padding: 1rem 1rem;
+    box-shadow: 0rem 0.2rem 2rem rgba(36, 36, 36, 0.206);
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+

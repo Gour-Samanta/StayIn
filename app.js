@@ -18,12 +18,12 @@ const User = require("./models/user.js");
 const customError = require("./utils/customError.js");
 
 
-
 //router
 const listingRouter = require("./routes/listings.js");
 const reviewRouter = require("./routes/reviews.js");
 const userRouter = require("./routes/user.js");
 const listingSearch = require("./routes/search.js");
+const bookingRouter = require("./routes/bookings.js");
 
 
 
@@ -100,6 +100,13 @@ app.use("/" , userRouter);
 
 //search
 app.use("/search",listingSearch);
+
+//booking
+app.use("/bookings" ,bookingRouter );
+
+// app.get( "/bookings/:id", (req, res) => {
+//     res.render("bookings/bookings.ejs", { itemId: req.params.id });
+// });
 
 //to handle wrong route
 app.use( (req,res,next)=>{ 
